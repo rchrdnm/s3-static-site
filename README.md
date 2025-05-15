@@ -1,36 +1,118 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌐 Static Website Deployment with Next.js, AWS, and GitHub Actions
 
-## Getting Started
+A production-ready static website pipeline using **Next.js**, hosted on **Amazon S3**, distributed globally with **CloudFront**, secured with **SSL (ACM)**, and deployed continuously via **GitHub Actions**.
 
-First, run the development server:
+---
+
+## 🔧 Tech Stack
+
+* **Frontend**: Next.js 15
+* **Hosting**: Amazon S3 (Static Website Hosting)
+* **CDN + HTTPS**: Amazon CloudFront + ACM
+* **CI/CD**: GitHub Actions
+* **DNS**: Cloudflare
+
+---
+
+## 📁 Project Structure
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+├── .github/workflows/deploy.yml  # GitHub Actions workflow
+├── out/                          # Static site output (after build)
+├── next.config.js               # Next.js config for static export
+├── package.json
+└── README.md
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚀 Deployment Steps
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 1. **Build Static Site**
 
-## Learn More
+```bash
+npm run build
+```
 
-To learn more about Next.js, take a look at the following resources:
+> Generates static files in the `out/` directory using Next.js static export.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 2. **Manual S3 Upload (Optional)**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+If testing before CI/CD:
 
-## Deploy on Vercel
+* Create S3 bucket (e.g., `static-site`) with static website hosting
+* Upload contents of `out/`
+* Set permissions and default root object to `index.html`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 3. **CloudFront + SSL**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+* Create a CloudFront distribution pointing to your S3 bucket
+* Request a certificate in ACM
+* Validate via DNS in Cloudflare
+* Set default root object to `index.html`
+
+### 4. **Cloudflare Domain Setup**
+
+* Add CNAME record pointing to CloudFront domain
+* Set to DNS-only (disable proxy to avoid redirect loops)
+
+### 5. **GitHub Actions Deployment**
+
+Create `.github/workflows/deploy.yml`:
+
+```yaml
+name: Deploy to S3
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+      - run: npm install
+      - run: npm run build
+
+      - uses: jakejarvis/s3-sync-action@v0.5.1
+        with:
+          args: --delete
+        env:
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: 'ap-southeast-2'
+          SOURCE_DIR: 'out'
+```
+
+> Store AWS credentials and bucket name securely in GitHub secrets.
+
+---
+
+## ✅ Results
+
+* 🌍 Website live at `https://yourdomain.dev`
+* 🔐 Fully HTTPS-enabled with SSL certificate
+* 🔁 Automated deployments on `git push`
+
+---
+
+## 🧠 Skills Demonstrated
+
+* AWS service integration (S3, CloudFront, ACM, IAM)
+* Static site generation and export with Next.js
+* GitHub Actions CI/CD workflow design
+* DNS and SSL configuration via Cloudflare
+
+---
+
+## 📌 Next Steps
+
+* Add staging environment with separate bucket
+* Monitor performance via AWS CloudWatch
+* Extend with contact form via AWS Lambda or external API
