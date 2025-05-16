@@ -96,7 +96,7 @@ jobs:
 
 ## ✅ Results
 
-* 🌍 Website live at `https://yourdomain.dev`
+* 🌍 Website live at `https://richardnam.dev`
 * 🔐 Fully HTTPS-enabled with SSL certificate
 * 🔁 Automated deployments on `git push`
 
