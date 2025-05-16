@@ -44,7 +44,7 @@ export default function Home() {
                 <HeroButtons />
                 <div className="flex gap-4 pt-2">
                   <Link
-                    href="https://github.com"
+                    href="https://github.com/rchrdnm"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="p-2 rounded-full hover:bg-gray-100"
@@ -53,7 +53,7 @@ export default function Home() {
                     <span className="sr-only">GitHub</span>
                   </Link>
                   <Link
-                    href="https://linkedin.com"
+                    href="https://linkedin.com/in/richardnam93"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="p-2 rounded-full hover:bg-gray-100"
@@ -61,7 +61,7 @@ export default function Home() {
                     <Linkedin className="h-5 w-5" />
                     <span className="sr-only">LinkedIn</span>
                   </Link>
-                  <Link href="mailto:contact@example.com" className="p-2 rounded-full hover:bg-gray-100">
+                  <Link href="mailto:hello@richardnam.dev" className="p-2 rounded-full hover:bg-gray-100">
                     <Mail className="h-5 w-5" />
                     <span className="sr-only">Email</span>
                   </Link>
@@ -70,7 +70,7 @@ export default function Home() {
               <div className="flex items-center justify-center">
                 <div className="relative aspect-square w-64 h-64 overflow-hidden rounded-full border -mt-0 md:-mt-24">
                   <Image
-                    src="/placeholder.svg?height=600&width=600"
+                    src="/images/profile_picture.jpg?height=600&width=600"
                     alt="Richard Nam"
                     width={600}
                     height={600}
@@ -104,7 +104,7 @@ export default function Home() {
                 </p>
                 <p>
                   My goal is to combine my customer service expertise with technical cloud knowledge to help
-                  organizations implement, maintain, and troubleshoot their cloud infrastructure. I believe my unique
+                  organisations implement, maintain, and troubleshoot their cloud infrastructure. I believe my unique
                   blend of soft skills and technical abilities makes me well-suited for a role that bridges the gap
                   between users and complex cloud systems.
                 </p>
@@ -127,11 +127,11 @@ export default function Home() {
               <div className="rounded-lg border p-6 shadow-sm">
                 <div className="flex flex-col space-y-2 sm:flex-row sm:items-start sm:justify-between sm:space-y-0">
                   <div>
-                    <h3 className="font-bold text-xl">Customer Support Specialist</h3>
-                    <p className="text-gray-600">Company Name</p>
+                    <h3 className="font-bold text-xl">Customer Experience Specialist</h3>
+                    <p className="text-gray-600">HiBob</p>
                   </div>
                   <div className="text-sm text-gray-600">
-                    <p>Jan 2020 - Present</p>
+                    <p>May 2025 - Present</p>
                   </div>
                 </div>
                 <div className="mt-4 space-y-2">
@@ -140,12 +140,11 @@ export default function Home() {
                     high customer satisfaction.
                   </p>
                   <ul className="list-disc pl-5 space-y-1">
-                    <li>Resolved an average of 50+ customer inquiries daily with a 95% satisfaction rate</li>
                     <li>
                       Developed internal knowledge base articles that reduced common ticket resolution time by 30%
                     </li>
                     <li>Collaborated with product teams to improve user experience based on customer feedback</li>
-                    <li>Trained and mentored 5 new support team members</li>
+
                   </ul>
                 </div>
               </div>
@@ -154,21 +153,22 @@ export default function Home() {
               <div className="rounded-lg border p-6 shadow-sm">
                 <div className="flex flex-col space-y-2 sm:flex-row sm:items-start sm:justify-between sm:space-y-0">
                   <div>
-                    <h3 className="font-bold text-xl">Technical Support Representative</h3>
-                    <p className="text-gray-600">Previous Company</p>
+                    <h3 className="font-bold text-xl">Merchant Support Specialist</h3>
+                    <p className="text-gray-600">Auctane (ShipStation & ShipEngine)</p>
                   </div>
                   <div className="text-sm text-gray-600">
-                    <p>Jun 2018 - Dec 2019</p>
+                    <p>Oct 2022 - Apr 2025</p>
                   </div>
                 </div>
                 <div className="mt-4 space-y-2">
                   <p>
-                    Provided first-line technical support for software products, assisting customers with installation,
+                    Provided first-line technical support for e-commerce SaaS products, assisting customers with installation,
                     configuration, and troubleshooting.
                   </p>
                   <ul className="list-disc pl-5 space-y-1">
                     <li>Maintained a first-call resolution rate of 75%</li>
-                    <li>Recognized as "Support Rep of the Month" three times</li>
+                    <li>Resolved an average of 50+ customer inquiries daily with a 95% satisfaction rate</li>
+                    <li>Recognised as "Support Rep of the Month" three times</li>
                     <li>Identified and documented software bugs, working closely with the development team</li>
                   </ul>
                 </div>
@@ -583,17 +583,19 @@ export default function Home() {
                           <Badge>CloudFront</Badge>
                           <Badge>Route 53</Badge>
                         </div>
-                        <ProjectButtons />
+                        <ProjectButtons sourceUrl="https://github.com/rchrdnm/s3-static-site" />
                       </div>
                     </CardContent>
                   </div>
                 </Card>
               </div>
-              <Button variant="outline" asChild>
-                <Link href="https://github.com/rchrdnm" target="_blank" rel="noopener noreferrer">
-                  View More on GitHub <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
+              <div className="pt-8">
+                <Button variant="outline" asChild>
+                  <Link href="https://github.com/rchrdnm" target="_blank" rel="noopener noreferrer">
+                    View More on GitHub <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </div>
             </div>
           </div>
         </section>
@@ -639,7 +641,7 @@ export default function Home() {
 
                   {/* LinkedIn Card - Now Clickable */}
                   <Link
-                    href="https://linkedin.com/in/richardnam"
+                    href="https://linkedin.com/in/richardnam93/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex flex-col items-center justify-center space-y-2 rounded-lg border p-6 bg-white hover:bg-gray-50 transition-colors duration-200 group"
@@ -672,7 +674,7 @@ export default function Home() {
 
                 {/* Optional: Add a GitHub card as well */}
                 <Link
-                  href="https://github.com"
+                  href="https://github.com/rchrdnm"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex flex-col items-center justify-center space-y-2 rounded-lg border p-6 bg-white hover:bg-gray-50 transition-colors duration-200 group"
@@ -714,7 +716,7 @@ export default function Home() {
           </p>
           <div className="flex gap-4">
             <Link
-              href="https://github.com"
+              href="https://github.com/rchrdnm"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 rounded-full hover:bg-gray-100"
@@ -736,7 +738,7 @@ export default function Home() {
               <span className="sr-only">GitHub</span>
             </Link>
             <Link
-              href="https://linkedin.com"
+              href="https://linkedin.com/in/richardnam93"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 rounded-full hover:bg-gray-100"
