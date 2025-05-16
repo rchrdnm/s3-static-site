@@ -51,14 +51,16 @@ jobs:
           echo "S3 sync completed"
 
       - name: Invalidate CloudFront
+        continue-on-error: true
         run: |
           echo "Creating CloudFront invalidation..."
           DISTRIBUTION_ID="${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}"
-          if [ -z "$DISTRIBUTION_ID" ]; then
-            echo "Error: CLOUDFRONT_DISTRIBUTION_ID is not set"
-            exit 1
+          if [ -n "$DISTRIBUTION_ID" ]; then
+            aws cloudfront create-invalidation \
+              --distribution-id "$DISTRIBUTION_ID" \
+              --paths '/*'
+            echo "CloudFront invalidation created"
+          else
+            echo "Skipping CloudFront invalidation - CLOUDFRONT_DISTRIBUTION_ID not set"
+            exit 0
           fi
-          aws cloudfront create-invalidation \
-            --distribution-id "$DISTRIBUTION_ID" \
-            --paths '/*'
-          echo "CloudFront invalidation created"
