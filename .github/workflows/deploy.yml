@@ -53,5 +53,12 @@ jobs:
       - name: Invalidate CloudFront
         run: |
           echo "Creating CloudFront invalidation..."
-          aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
+          DISTRIBUTION_ID="${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}"
+          if [ -z "$DISTRIBUTION_ID" ]; then
+            echo "Error: CLOUDFRONT_DISTRIBUTION_ID is not set"
+            exit 1
+          fi
+          aws cloudfront create-invalidation \
+            --distribution-id "$DISTRIBUTION_ID" \
+            --paths '/*'
           echo "CloudFront invalidation created"
