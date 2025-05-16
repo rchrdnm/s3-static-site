@@ -632,7 +632,7 @@ export default function Home() {
                     </svg>
                     <div className="space-y-1">
                       <h3 className="font-medium">Email</h3>
-                      <p className="text-sm text-gray-600">contact@richardnam.dev</p>
+                      <p className="text-sm text-gray-600">hello@richardnam.dev</p>
                     </div>
                     <span className="text-blue-600 text-sm mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                       Send an email →
@@ -664,7 +664,7 @@ export default function Home() {
                     </svg>
                     <div className="space-y-1">
                       <h3 className="font-medium">LinkedIn</h3>
-                      <p className="text-sm text-gray-600">linkedin.com/in/richardnam</p>
+                      <p className="text-sm text-gray-600">linkedin.com/in/richardnam93/</p>
                     </div>
                     <span className="text-blue-600 text-sm mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                       Connect on LinkedIn →
@@ -672,7 +672,7 @@ export default function Home() {
                   </Link>
                 </div>
 
-                {/* Optional: Add a GitHub card as well */}
+                {/* GitHub Card */}
                 <Link
                   href="https://github.com/rchrdnm"
                   target="_blank"
@@ -696,7 +696,7 @@ export default function Home() {
                   </svg>
                   <div className="space-y-1">
                     <h3 className="font-medium">GitHub</h3>
-                    <p className="text-sm text-gray-600">github.com/richardnam</p>
+                    <p className="text-sm text-gray-600">github.com/rchrdnm</p>
                   </div>
                   <span className="text-blue-600 text-sm mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                     View my projects →
